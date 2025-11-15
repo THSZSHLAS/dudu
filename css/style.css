@@ -148,10 +148,12 @@ footer {
   position: fixed;
   right: 12px;
   bottom: 12px;
-  width: 2000px;
-  max-width: 50vw;
-  pointer-events: none; /* 不挡点击 */
+  width: 240px;      
+  max-width: 60vw;
+  cursor: pointer;   /* 鼠标变成小手 */
+  pointer-events: auto; /* 允许点击 */
 }
+
 
 /* 手机端微调 */
 
@@ -176,6 +178,7 @@ footer {
   .main-btn {
     padding: 16px 28px;
     font-size: 1.4rem;   /* 手机上稍微收一点，不*
+
 
 
 
