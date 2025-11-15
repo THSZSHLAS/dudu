@@ -5,7 +5,7 @@ function getRandomItem(arr) {
   return arr[idx];
 }
 
-// 随机选一只小猫
+// 随机选一只小猫 + 点击进入彩蛋
 function initCornerCat() {
   const catEl = document.getElementById("corner-cat");
   if (!catEl) return;
@@ -21,6 +21,12 @@ function initCornerCat() {
   if (randomSrc) {
     catEl.src = randomSrc;
   }
+
+  catEl.style.cursor = "pointer";
+  catEl.addEventListener("click", () => {
+    // 点击小猫，跳转到第一关彩蛋页面
+    window.location.href = "egg1.html";
+  });
 }
 
 /* ---------- 名言页面 quotes.html ---------- */
@@ -30,7 +36,8 @@ function initQuotePage() {
   const authorEl = document.getElementById("quote-author");
   const btn = document.getElementById("btn-change-quote");
 
-  if (!textEl || !authorEl || !btn || !Array.isArray(quotes)) return;
+  if (!textEl || !authorEl || !btn || typeof quotes === "undefined") return;
+  if (!Array.isArray(quotes)) return;
 
   function renderRandomQuote() {
     const q = getRandomItem(quotes);
@@ -62,8 +69,15 @@ function initTheoremPage() {
   const descEl = document.getElementById("theorem-desc");
   const btn = document.getElementById("btn-change-theorem");
 
-  if (!nameEl || !categoryEl || !descEl || !btn || !Array.isArray(theorems))
+  if (
+    !nameEl ||
+    !categoryEl ||
+    !descEl ||
+    !btn ||
+    typeof theorems === "undefined"
+  )
     return;
+  if (!Array.isArray(theorems)) return;
 
   function renderRandomTheorem() {
     const t = getRandomItem(theorems);
@@ -120,7 +134,7 @@ function initSeasonDetailPage() {
   titleEl.textContent = `${cnName} · 诗句`;
   subTitleEl.textContent = `${cnName}的随机诗句`;
 
-  if (!poems || !Array.isArray(poems[seasonKey])) {
+  if (typeof poems === "undefined" || !Array.isArray(poems[seasonKey])) {
     poemTextEl.textContent = "这个季节暂时还没有诗句数据～";
     poemAuthorEl.textContent = "";
     btn.disabled = true;
@@ -149,14 +163,75 @@ function initSeasonDetailPage() {
   renderRandomPoem();
 }
 
+/* ---------- 彩蛋页面一：egg1.html ---------- */
+
+function initEgg1Page() {
+  const input = document.getElementById("egg1-answer");
+  const btn = document.getElementById("egg1-submit");
+  const feedback = document.getElementById("egg1-feedback");
+
+  if (!input || !btn || !feedback) return; // 不是这个页面
+
+  btn.addEventListener("click", () => {
+    const val = input.value.trim();
+
+    if (!val) {
+      feedback.style.color = "#d32f2f";
+      feedback.textContent = "先写点什么吧～";
+      return;
+    }
+
+    if (val === "3" || val === "三") {
+      feedback.style.color = "green";
+      feedback.textContent = "答对啦，小猫带你进入下一关……";
+      setTimeout(() => {
+        window.location.href = "egg2.html";
+      }, 800);
+    } else {
+      feedback.style.color = "#d32f2f";
+      feedback.textContent = "好像不对哦，再回首页数一数按钮？";
+    }
+  });
+}
+
+/* ---------- 彩蛋页面二：egg2.html ---------- */
+
+function initEgg2Page() {
+  const input = document.getElementById("egg2-answer");
+  const btn = document.getElementById("egg2-submit");
+  const feedback = document.getElementById("egg2-feedback");
+
+  if (!input || !btn || !feedback) return; // 不是这个页面
+
+  btn.addEventListener("click", () => {
+    const val = input.value.trim().toLowerCase();
+
+    if (!val) {
+      feedback.style.color = "#d32f2f";
+      feedback.textContent = "先随便试试猜一个也行～";
+      return;
+    }
+
+    if (val === "dudu") {
+      feedback.style.color = "green";
+      feedback.innerHTML = "🎉 恭喜！请找开发者领取 <strong>66 元红包</strong>！";
+    } else {
+      feedback.style.color = "#d32f2f";
+      feedback.textContent = "不对哦，再想想，提示：和某位的昵称很有关哦～";
+    }
+  });
+}
+
 /* ---------- DOM Ready ---------- */
 
 window.addEventListener("DOMContentLoaded", () => {
-  // 所有页面都可以执行的（如果有 corner-cat 就随机一只）
+  // 所有页面都可以执行的（如果有 corner-cat 就随机一只 + 加点击）
   initCornerCat();
 
   // 各自页面按需初始化
   initQuotePage();
   initTheoremPage();
   initSeasonDetailPage();
+  initEgg1Page();
+  initEgg2Page();
 });
