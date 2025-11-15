@@ -154,6 +154,21 @@ footer {
   pointer-events: auto; /* 允许点击 */
 }
 
+.text-input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  max-width: 260px;
+  width: 100%;
+  margin: 8px 0 12px;
+}
+
+.hint-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 4px;
+}
 
 /* 手机端微调 */
 
@@ -178,6 +193,7 @@ footer {
   .main-btn {
     padding: 16px 28px;
     font-size: 1.4rem;   /* 手机上稍微收一点，不*
+
 
 
 
