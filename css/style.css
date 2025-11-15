@@ -81,9 +81,9 @@ button,
 .main-btn {
   cursor: pointer;
   border: none;
-  padding: 20px 40px;        /* 比原来大一圈 */
+  padding: 40px 80px;        /* 比原来大一圈 */
   border-radius: 999px;
-  font-size: 1.8rem;         /* 字体也变大 */
+  font-size: 2.0rem;         /* 字体也变大 */
   background: #3f51b5;
   color: #fff;
   display: inline-block;
@@ -176,3 +176,4 @@ footer {
   .main-btn {
     padding: 16px 28px;
     font-size: 1.4rem;   /* 手机上稍微收一点，不*
+
