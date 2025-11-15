@@ -165,6 +165,8 @@ function initSeasonDetailPage() {
 
 /* ---------- 彩蛋页面一：egg1.html ---------- */
 
+/* ---------- 彩蛋页面一：egg1.html ---------- */
+
 function initEgg1Page() {
   const input = document.getElementById("egg1-answer");
   const btn = document.getElementById("egg1-submit");
@@ -181,7 +183,7 @@ function initEgg1Page() {
       return;
     }
 
-    if (val === "3" || val === "三") {
+    if (val === "蓝" || val === "蓝色") {
       feedback.style.color = "green";
       feedback.textContent = "答对啦，小猫带你进入下一关……";
       setTimeout(() => {
@@ -189,7 +191,7 @@ function initEgg1Page() {
       }, 800);
     } else {
       feedback.style.color = "#d32f2f";
-      feedback.textContent = "好像不对哦，再回首页数一数按钮？";
+      feedback.textContent = "不对哦，再想想～";
     }
   });
 }
@@ -235,3 +237,4 @@ window.addEventListener("DOMContentLoaded", () => {
   initEgg1Page();
   initEgg2Page();
 });
+
