@@ -210,7 +210,7 @@ function initEgg2Page() {
 
     if (!val) {
       feedback.style.color = "#d32f2f";
-      feedback.textContent = "先随便试试猜一个也行～";
+      feedback.textContent = "先随便试试猜一个也行";
       return;
     }
 
@@ -219,7 +219,7 @@ function initEgg2Page() {
       feedback.innerHTML = "🎉 恭喜！请找开发者领取 <strong>66 元红包</strong>！";
     } else {
       feedback.style.color = "#d32f2f";
-      feedback.textContent = "不对哦，再想想，提示：和某位的昵称很有关哦～";
+      feedback.textContent = "不对";
     }
   });
 }
@@ -237,4 +237,5 @@ window.addEventListener("DOMContentLoaded", () => {
   initEgg1Page();
   initEgg2Page();
 });
+
 
